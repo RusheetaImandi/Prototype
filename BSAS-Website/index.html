@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Bus Service Application System</title>
+</head>
+<body>
+  <div class="header">
+    <img src="your-logo-url.png" alt="Logo" class="logo">
+    <div class="title">BSAS</div>
+  </div>
+
+  <div class="welcome-page">
+    <h1 class="main-title">Bus Service Application System</h1>
+    <h2 class="slogan">The Right Route,Everytime </h2>
+    <div class="button-container">
+      <button onclick="location.href='login.html'">Login</button>
+      <button onclick="location.href='signup.html'">Signup</button>
+      <button onclick="location.href='about.html'">About</button>
+      <button onclick="location.href='locations.html'">Track Your Bus</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Check if the user has already visited the home page
+      if (sessionStorage.getItem('visited')) {
+        // If visited, skip animations
+        document.querySelector('.logo').style.opacity = '1';
+        document.querySelector('.title').style.opacity = '1';
+        document.querySelector('.main-title').style.opacity = '1';
+        document.querySelector('.slogan').style.opacity = '1';
+        document.querySelectorAll('.button-container button').forEach(button => {
+          button.style.opacity = '1';
+        });
+      } else {
+        // Run animations for the first-time visitor
+        const logo = document.querySelector('.logo');
+        const title = document.querySelector('.title');
+        const mainTitle = document.querySelector('.main-title');
+        const slogan = document.querySelector('.slogan');
+        const buttons = document.querySelectorAll('.button-container button');
+
+        // Apply fade-in animations with delays
+        logo.style.animation = "fadeIn 1s forwards";
+        title.style.animation = "fadeIn 1s forwards 0.5s"; // 0.5s delay for title
+        mainTitle.style.animation = "fadeIn 1s forwards 1s"; // 1s delay for main title
+        slogan.style.animation = "fadeIn 1s forwards 1.5s"; // 1.5s delay for slogan
+
+        // Buttons fade in after the title and slogan
+        buttons.forEach((button, index) => {
+          button.style.animation = `fadeIn 1s forwards`;
+          button.style.animationDelay = `${index * 0.5 + 2}s`; // Delay each button by 0.5s
+        });
+
+        // Set a flag in sessionStorage to track that the user has visited the page
+        sessionStorage.setItem('visited', 'true');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+  <title>Select Your Route</title>
+</head>
+<body>
+  <div class="header">
+    <img src="your-logo-url.png" alt="Logo" class="logo">
+    <div class="title">BSAS</div>
+  </div>
+
+  <div class="location-page">
+    <h2>Select Your Route</h2>
+    
+    <label for="starting-point">Starting Point:</label><br>
+    <input type="text" id="starting-point" placeholder="From"><br>
+
+    <label for="ending-point">Ending Point:</label><br>
+    <input type="text" id="ending-point" placeholder="To"><br>
+
+    <!-- Buttons with increased spacing -->
+    <button class="location-button" onclick="getBuses()">Get Buses</button>
+    <button class="location-button" onclick="goBack()">Back</button>
+  </div>
+
+  <script>
+    function getBuses() {
+      const startingPoint = document.getElementById('starting-point').value.trim();
+      const endingPoint = document.getElementById('ending-point').value.trim();
+      window.location.href = `buses.html?starting=${encodeURIComponent(startingPoint)}&ending=${encodeURIComponent(endingPoint)}`;
+    }
+    
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
